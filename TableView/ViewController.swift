@@ -21,14 +21,15 @@ class ViewController: UIViewController {
 
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    //sectionは指定しないでセルの数を都道府県分表示した
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return administrativeDivisions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath)
+        cell.textLabel?.text = administrativeDivisions[indexPath.item]
         
+        return cell
     }
-    
 }
